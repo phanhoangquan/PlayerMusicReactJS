@@ -5,6 +5,7 @@ Khởi tạo dự án với Vite
 ```bash
 npm create vite
 ```
+
 Select a framework: React
 Select a variant: JavaScript + SWC
 
@@ -19,11 +20,13 @@ In the project directory, you can run:
 ```bash
 npm run dev
 ```
+
 Runs the app in the development mode.
 
 ```bash
 npm run build
 ```
+
 Builds the app for production to the `dist` folder
 
 ## Install code formatter Prettier
@@ -37,6 +40,7 @@ add script to package.json
 ```json
 "format": "prettier --write ."
 ```
+
 create file .prettierrc to root project
 
 ```javascript
@@ -60,6 +64,7 @@ create file .prettierrc to root project
    "vueIndentScriptAndStyle": false
 }
 ```
+
 Create folder .vscode/settings.json to root
 to auto format when save before commit
 
@@ -102,3 +107,9 @@ to show all file on folder to easy import
 }
 ```
 
+## Librarys && Scripts
+
+```bash
+npm install normalize.css
+npm install sass
+```
