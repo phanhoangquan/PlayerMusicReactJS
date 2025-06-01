@@ -1,0 +1,27 @@
+.wrapper {
+   display: flex;
+   min-height: 43px;
+   min-width: 81px;
+   align-items: center;
+   justify-content: space-around;
+   border-radius: 61px;
+   font-weight: 700;
+   &:hover {
+      background-color: rgba(255, 253, 253, 0.9);
+   }
+   &:active {
+      background-color: rgba(255, 253, 253);
+   }
+}
+.lighthigh {
+   transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+   &:hover {
+      transform: scale(1.1); // to ra 10%
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); // tạo bóng mượt
+   }
+   &:active {
+      transform: scale(0.95); // nhỏ nhẹ khi click xuống
+   }
+}

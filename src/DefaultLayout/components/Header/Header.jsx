@@ -19,7 +19,9 @@ function Header() {
             </div>
             <Search />
             <div className={cx('action')}>
-               <Button>Login</Button>
+               <Button className={cx('login-btn')} lighthigh>
+                  Login
+               </Button>
             </div>
          </div>
       </div>

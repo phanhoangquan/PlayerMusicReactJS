@@ -6,6 +6,7 @@ import styles from './Search.module.scss';
 import { useState, useRef } from 'react';
 import Button from '~/components/Button';
 import config from '~/config/config';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -29,9 +30,9 @@ function Search() {
 
    return (
       <div className={cx('container-search')}>
-         <Button to={config.routes.home} className={cx('home')}>
+         <Link to={config.routes.home} className={cx('home')}>
             <HomeIcon />
-         </Button>
+         </Link>
          <div className={cx('search')}>
             <input
                ref={inputRef}
