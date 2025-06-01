@@ -115,3 +115,9 @@ npm install sass
 npm install classnames
 npm install react-router-dom
 ```
+
+# Icon
+
+```bash
+npm install --save @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons @fortawesome/fontawesome-svg-core
+```
