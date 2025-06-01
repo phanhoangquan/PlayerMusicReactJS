@@ -112,4 +112,6 @@ to show all file on folder to easy import
 ```bash
 npm install normalize.css
 npm install sass
+npm install classnames
+npm install react-router-dom
 ```
