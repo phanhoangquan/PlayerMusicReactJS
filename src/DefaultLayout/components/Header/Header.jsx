@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import config from '~/config/config';
 import images from '~/assets/images/images';
 import Search from '~/DefaultLayout/components/Search';
+import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
@@ -17,7 +18,9 @@ function Header() {
                </Link>
             </div>
             <Search />
-            <div className={cx('action')}></div>
+            <div className={cx('action')}>
+               <Button>Login</Button>
+            </div>
          </div>
       </div>
    );
