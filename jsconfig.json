@@ -1,0 +1,9 @@
+// Giúp tự động gợi ý đường dẫn. VD: ~/ sẽ gợi ý tiếp những thư mục nằm trong thư mục src
+{
+   "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+         "~/*": ["src/*"]
+      }
+   }
+}
