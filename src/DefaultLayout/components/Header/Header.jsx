@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import config from '~/config/config';
 import images from '~/assets/images/images';
 import Search from '~/DefaultLayout/components/Search';
-import Button from '~/components/Button';
+import Menu from '~/DefaultLayout/components/Menu';
 
 const cx = classNames.bind(styles);
 
@@ -18,11 +18,7 @@ function Header() {
                </Link>
             </div>
             <Search />
-            <div className={cx('action')}>
-               <Button className={cx('login-btn')} lighthigh>
-                  Login
-               </Button>
-            </div>
+            <Menu />
          </div>
       </div>
    );
