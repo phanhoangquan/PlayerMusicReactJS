@@ -114,6 +114,7 @@ npm install normalize.css
 npm install sass
 npm install classnames
 npm install react-router-dom
+npm install @tippyjs/react
 ```
 
 # Icon

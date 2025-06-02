@@ -8,6 +8,12 @@
    // Default Layout
    --default-layout-width: 1150px;
 }
+* {
+   box-sizing: border-box;
+   padding: 0;
+   margin: 0;
+}
+
 h1 {
    font-size: 2rem;
 }

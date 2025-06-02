@@ -1,0 +1,27 @@
+.wrapper {
+   display: flex;
+   align-items: center;
+   padding: 8px;
+   color: var(--white);
+   border-radius: 10px;
+   &:hover {
+      background-color: rgba(149, 149, 149, 0.8);
+   }
+}
+.image {
+   height: 55px;
+   width: 55px;
+   border-radius: 4px;
+   object-fit: cover;
+}
+.info {
+   margin-left: 10px;
+}
+.name {
+   font-size: 1.6rem;
+   font-weight: 700;
+}
+.singer {
+   font-size: 1.4rem;
+   color: rgba(252, 252, 253, 0.5);
+}
