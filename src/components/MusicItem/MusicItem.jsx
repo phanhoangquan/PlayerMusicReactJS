@@ -11,7 +11,7 @@ function MusicItem({ data }) {
          <Image className={cx('image')} src={data.image}></Image>
          <div className={cx('info')}>
             <p className={cx('name')}>{data.title}</p>
-            <p className={cx('singer')}>{data.artist}</p>
+            <p className={cx('singer')}>{data.singer}</p>
          </div>
       </Link>
    );

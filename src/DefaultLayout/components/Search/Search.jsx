@@ -3,28 +3,42 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import config from '~/config/config';
 import { Link } from 'react-router-dom';
 import HeadlessTippy from '@tippyjs/react/headless';
 import PopperWrapper from '~/components/Popper';
 import MusicItem from '~/components/MusicItem';
 
+import searchServices from '~/Services/searchServices.js';
+
 const cx = classNames.bind(styles);
 
 function Search() {
    const inputRef = useRef();
    const [searchValue, setSearchValue] = useState('');
+   const [searchResult, setSearchResult] = useState([]);
+   const [loading, setLoading] = useState(false);
+   const [showResult, setShowResult] = useState(false);
 
-   const fakeUser = {
-      id: 3,
-      title: 'Muộn rồi mà sao còn',
-      artist: 'Sơn Tùng MTP',
-      album: 'MTP Collection',
-      image: 'http://localhost:5173/assets/images/muon_roi_ma_sao_con.png',
-      url: 'http://localhost:5173/assets/songs/MuonRoiMaSaoCon-SonTungMTP.mp3',
-      name: 'muonroimasaocon_STMTP',
-   };
+   useEffect(() => {
+      if (!searchValue.trim()) {
+         setSearchResult([]);
+         return;
+      }
+      const searchAPI = async () => {
+         try {
+            setLoading(true);
+            const result = await searchServices(searchValue, 5);
+            setLoading(false);
+            setSearchResult(result);
+         } catch {
+            console.error('Search failed:');
+            setSearchResult([]);
+         }
+      };
+      searchAPI();
+   }, [searchValue]);
 
    const handleChange = (e) => {
       setSearchValue(e.target.value);
@@ -47,14 +61,14 @@ function Search() {
          </Link>
          <HeadlessTippy
             interactive
-            visible
+            visible={searchResult.length > 0}
             render={(attrs) => (
                <div className={cx('search-result')} tabIndex="-1 " {...attrs}>
                   <PopperWrapper>
                      <div className={cx('search-item')}>
-                        <MusicItem key={1} data={fakeUser} />
-                        <MusicItem key={2} data={fakeUser} />
-                        <MusicItem key={3} data={fakeUser} />
+                        {searchResult.map((music, index) => {
+                           return <MusicItem key={index} data={music} />;
+                        })}
                      </div>
                   </PopperWrapper>
                </div>
@@ -68,14 +82,16 @@ function Search() {
                   placeholder="Search your music..."
                   onChange={handleChange}
                ></input>
-               {searchValue && (
+               {!loading && searchValue && (
                   <button className={cx('clear-btn')} onClick={handleClear}>
                      <FontAwesomeIcon icon={faCircleXmark} />
                   </button>
                )}
-               {/* <button className={cx('loading')}>
-                   <FontAwesomeIcon icon={faSpinner} />
-                </button> */}
+               {loading && (
+                  <button className={cx('loading')}>
+                     <FontAwesomeIcon icon={faSpinner} />
+                  </button>
+               )}
                <button className={cx('search-btn')} onClick={handleSearch}>
                   <SearchIcon />
                </button>

@@ -122,3 +122,9 @@ npm install @tippyjs/react
 ```bash
 npm install --save @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons @fortawesome/fontawesome-svg-core
 ```
+
+# API
+
+```bash
+npm install axios
+```

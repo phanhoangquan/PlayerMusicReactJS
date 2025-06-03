@@ -2,7 +2,7 @@
    {
       "id": 1,
       "title": "Lạc Trôi",
-      "artist": "Sơn Tùng MTP",
+      "singer": "Sơn Tùng MTP",
       "album": "MTP Collection",
       "image": "http://localhost:5173/assets/images/lac_troi.png",
       "url": "http://localhost:5173/assets/songs/LacTroi-SonTungMTP-4725907.mp3",
@@ -11,7 +11,7 @@
    {
       "id": 2,
       "title": "Chạy Ngay Đi",
-      "artist": "Sơn Tùng MTP",
+      "singer": "Sơn Tùng MTP",
       "album": "MTP Collection",
       "image": "http://localhost:5173/assets/images/chay_ngay_di.png",
       "url": "http://localhost:5173/assets/songs/ChayNgayDi-SonTungMTP-5468704.mp3",
@@ -20,7 +20,7 @@
    {
       "id": 3,
       "title": "Muộn rồi mà sao còn",
-      "artist": "Sơn Tùng MTP",
+      "singer": "Sơn Tùng MTP",
       "album": "MTP Collection",
       "image": "http://localhost:5173/assets/images/muon_roi_ma_sao_con.png",
       "url": "http://localhost:5173/assets/songs/MuonRoiMaSaoCon-SonTungMTP.mp3",
