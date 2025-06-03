@@ -28,6 +28,10 @@ body {
    // Quy định cách thanh cuộn dọc xuất hiện
    overflow-y: hidden;
 }
+img {
+   height: 100%;
+   width: 100%;
+}
 //ScrollBar copy from TikTok
 
 html ::-webkit-scrollbar {
