@@ -26,10 +26,10 @@ body {
    line-height: 1.5;
    text-rendering: optimizeSpeed;
    // Quy định cách thanh cuộn dọc xuất hiện
-   overflow-y: overlay;
+   overflow-y: hidden;
 }
-
 //ScrollBar copy from TikTok
+
 html ::-webkit-scrollbar {
    border-radius: 0px;
    width: 8px;

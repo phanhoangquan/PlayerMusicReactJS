@@ -54,6 +54,10 @@ function Search() {
       }
    };
 
+   const handleClickOutside = () => {
+      setShowResult(false);
+   };
+
    return (
       <div className={cx('container-search')}>
          <Link to={config.routes.home} className={cx('home')}>
@@ -61,7 +65,8 @@ function Search() {
          </Link>
          <HeadlessTippy
             interactive
-            visible={searchResult.length > 0}
+            visible={showResult && searchResult.length > 0}
+            onClickOutside={handleClickOutside}
             render={(attrs) => (
                <div className={cx('search-result')} tabIndex="-1 " {...attrs}>
                   <PopperWrapper>
@@ -81,6 +86,9 @@ function Search() {
                   spellCheck={false}
                   placeholder="Search your music..."
                   onChange={handleChange}
+                  onFocus={() => {
+                     setShowResult(true);
+                  }}
                ></input>
                {!loading && searchValue && (
                   <button className={cx('clear-btn')} onClick={handleClear}>
