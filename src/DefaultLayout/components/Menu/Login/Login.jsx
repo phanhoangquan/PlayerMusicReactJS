@@ -8,12 +8,16 @@ import { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
+import * as Requests from '~/utils/httpRequest';
+
 const cx = classNames.bind(styles);
 
-function Login({ setShowLogin, setLogin }) {
+function Login({ setShowLogin, setLogin, setAccount }) {
    const wrapperRef = useRef();
 
    const [error, setError] = useState(false);
+   const [nickname, setNickname] = useState('');
+   const [password, setPassword] = useState('');
 
    // Khi click bên ngoài Login thì đóng Login
    useEffect(() => {
@@ -32,12 +36,32 @@ function Login({ setShowLogin, setLogin }) {
    const handleClose = () => {
       setShowLogin(false);
    };
+
+   const handleLogin = async (e) => {
+      e.preventDefault();
+      try {
+         const response = await Requests.get('users.json');
+         const account = response.find((res) => {
+            return res.nickname === nickname && res.password === password;
+         });
+         if (account) {
+            setError(false);
+            setLogin(true);
+            setAccount(account);
+         } else {
+            console.log('DANG NHAP THAT BAI');
+            setError(true);
+         }
+      } catch {
+         console.error('Lỗi máy chủ hoặc không tìm thấy API');
+      }
+   };
    return (
       <div className={cx('wrapper')} ref={wrapperRef}>
          <button className={cx('close')} onClick={handleClose}>
             <FontAwesomeIcon icon={faCircleXmark} />
          </button>
-         <form action="" method="" className={cx('form')} id="form-1">
+         <form onSubmit={handleLogin} action="" method="" className={cx('form')} id="form-1">
             <div className={cx('title')}>
                <div className={cx('logo-container')}>
                   <Image src={images.logo} className={cx('logo')} />
@@ -52,6 +76,10 @@ function Login({ setShowLogin, setLogin }) {
                   id="nickname"
                   name="nickname"
                   type="text"
+                  value={nickname}
+                  onChange={(e) => {
+                     setNickname(e.target.value);
+                  }}
                   placeholder="Username..."
                   className={cx('form-control')}
                ></input>
@@ -64,6 +92,10 @@ function Login({ setShowLogin, setLogin }) {
                   id="password"
                   name="password"
                   type="text"
+                  value={password}
+                  onChange={(e) => {
+                     setPassword(e.target.value);
+                  }}
                   placeholder="Password..."
                   className={cx('form-control')}
                ></input>

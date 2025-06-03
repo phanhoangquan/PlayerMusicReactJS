@@ -2,15 +2,25 @@
    {
       "id": 1,
       "avatar": "http://localhost:5173/assets/avatars/1.png",
+      "nickname": "admin",
+      "name": "Phan Hoàng Quân",
+      "password": "123",
+      "admin": true
+   },
+   {
+      "id": 1,
+      "avatar": "http://localhost:5173/assets/avatars/1.png",
       "nickname": "nhaccuatui",
       "name": "Nguyễn Văn Khôi",
-      "password": "123456"
+      "password": "123456",
+      "admin": false
    },
    {
       "id": 2,
       "avatar": "http://localhost:5173/assets/avatars/2.png",
       "nickname": "buoinamroi",
       "name": "Trần Thị Bưởi",
-      "password": "123"
+      "password": "123",
+      "admin": false
    }
 ]
