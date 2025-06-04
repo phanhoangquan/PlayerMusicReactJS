@@ -49,7 +49,6 @@ function Login({ setShowLogin, setLogin, setAccount }) {
             setLogin(true);
             setAccount(account);
          } else {
-            console.log('DANG NHAP THAT BAI');
             setError(true);
          }
       } catch {

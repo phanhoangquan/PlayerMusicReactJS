@@ -1,6 +1,7 @@
 .wrapper {
    display: flex;
    flex-direction: column;
+   background-color: black;
 }
 .container {
    display: flex;
@@ -8,5 +9,10 @@
    margin-top: 66px;
 }
 .content {
+   // Thao tác giúp scroll ngay trong container content
+   height: 100vh;
+   overflow-y: auto;
    flex: 1;
+   background-color: #121212;
+   border-radius: 5px;
 }
