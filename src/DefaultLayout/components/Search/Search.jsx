@@ -12,6 +12,8 @@ import MusicItem from '~/components/MusicItem';
 
 import searchServices from '~/Services/searchServices.js';
 
+import useDebounced from '~/hooks';
+
 const cx = classNames.bind(styles);
 
 function Search() {
@@ -21,15 +23,17 @@ function Search() {
    const [loading, setLoading] = useState(false);
    const [showResult, setShowResult] = useState(false);
 
+   const debouncedValue = useDebounced(searchValue, 500);
+
    useEffect(() => {
-      if (!searchValue.trim()) {
+      if (!debouncedValue.trim()) {
          setSearchResult([]);
          return;
       }
       const searchAPI = async () => {
          try {
             setLoading(true);
-            const result = await searchServices(searchValue, 5);
+            const result = await searchServices(debouncedValue, 5);
             setLoading(false);
             setSearchResult(result);
          } catch {
@@ -38,7 +42,7 @@ function Search() {
          }
       };
       searchAPI();
-   }, [searchValue]);
+   }, [debouncedValue]);
 
    const handleChange = (e) => {
       setSearchValue(e.target.value);

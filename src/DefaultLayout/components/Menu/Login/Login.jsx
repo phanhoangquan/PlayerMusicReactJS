@@ -40,7 +40,7 @@ function Login({ setShowLogin, setLogin, setAccount }) {
    const handleLogin = async (e) => {
       e.preventDefault();
       try {
-         const response = await Requests.get('users.json');
+         const response = await Requests.get('assets/data/users.json');
          const account = response.find((res) => {
             return res.nickname === nickname && res.password === password;
          });
