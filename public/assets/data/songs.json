@@ -3,6 +3,7 @@
       "id": 1,
       "title": "Lạc Trôi",
       "singer": "Sơn Tùng MTP",
+      "avatar": "http://localhost:5173/assets/singers/son_tung_mtp.png",
       "album": "MTP Collection",
       "image": "http://localhost:5173/assets/images/lac_troi.png",
       "url": "http://localhost:5173/assets/songs/LacTroi-SonTungMTP-4725907.mp3",
@@ -12,6 +13,7 @@
       "id": 2,
       "title": "Chạy Ngay Đi",
       "singer": "Sơn Tùng MTP",
+      "avatar": "http://localhost:5173/assets/singers/son_tung_mtp.png",
       "album": "MTP Collection",
       "image": "http://localhost:5173/assets/images/chay_ngay_di.png",
       "url": "http://localhost:5173/assets/songs/ChayNgayDi-SonTungMTP-5468704.mp3",
@@ -21,9 +23,70 @@
       "id": 3,
       "title": "Muộn rồi mà sao còn",
       "singer": "Sơn Tùng MTP",
+      "avatar": "http://localhost:5173/assets/singers/son_tung_mtp.png",
       "album": "MTP Collection",
       "image": "http://localhost:5173/assets/images/muon_roi_ma_sao_con.png",
       "url": "http://localhost:5173/assets/songs/MuonRoiMaSaoCon-SonTungMTP.mp3",
       "name": "muonroimasaocon_STMTP"
+   },
+   {
+      "id": 4,
+      "title": "Cơn mưa ngang qua",
+      "singer": "Sơn Tùng MTP",
+      "avatar": "http://localhost:5173/assets/singers/son_tung_mtp.png",
+      "album": "MTP Collection",
+      "image": "http://localhost:5173/assets/images/con_mua_ngang_qua.png",
+      "url": "http://localhost:5173/assets/songs/ConMuaNgangQua-SonTungMTP-1142953.mp3",
+      "name": "conmuangangqua_STMTP"
+   },
+   {
+      "id": 5,
+      "title": "Anh đã quen với cô đơn",
+      "singer": "Soobin Hoàng Sơn",
+      "avatar": "http://localhost:5173/assets/singers/soobin_hoang_son.png",
+      "album": "Soobin Collection",
+      "image": "http://localhost:5173/assets/images/anh_da_quen_voi_co_don.png",
+      "url": "http://localhost:5173/assets/songs/AnhDaQuenVoiCoDon-SoobinHoangSon-4821170.mp3",
+      "name": "anhdaquenvoicodon_soobin"
+   },
+   {
+      "id": 6,
+      "title": "Đi để trở về",
+      "singer": "Soobin Hoàng Sơn",
+      "avatar": "http://localhost:5173/assets/singers/soobin_hoang_son.png",
+      "album": "Soobin Collection",
+      "image": "http://localhost:5173/assets/images/di_de_tro_ve.png",
+      "url": "http://localhost:5173/assets/songs/DiDeTroVe-SoobinHoangSon-4726882.mp3",
+      "name": "didetrove_soobin"
+   },
+   {
+      "id": 7,
+      "title": "Chạm đáy nỗi đau",
+      "singer": "Erik",
+      "avatar": "http://localhost:5173/assets/singers/erik.png",
+      "album": "Erik Collection",
+      "image": "http://localhost:5173/assets/images/cham_day_noi_dau.png",
+      "url": "http://localhost:5173/assets/songs/ChamDayNoiDau-ERIK-5441608.mp3",
+      "name": "chamdaynoidau_erik"
+   },
+   {
+      "id": 8,
+      "title": "Đau nhất là lặng im",
+      "singer": "Erik",
+      "avatar": "http://localhost:5173/assets/singers/erik.png",
+      "album": "Erik Collection",
+      "image": "http://localhost:5173/assets/images/dau_nhat_la_lang_im.png",
+      "url": "http://localhost:5173/assets/songs/DauNhatLaLangIm-ERIK-7130326.mp3",
+      "name": "daunhatlalangim_erik"
+   },
+   {
+      "id": 9,
+      "title": "Chạy về khóc với anh",
+      "singer": "Erik",
+      "avatar": "http://localhost:5173/assets/singers/erik.png",
+      "album": "Erik Collection",
+      "image": "http://localhost:5173/assets/images/chay_ve_khoc_voi_anh.png",
+      "url": "http://localhost:5173/assets/songs/YeuDuongKhoQuaThiChayVeKhocVoiAnh-ERIK-7128950.mp3",
+      "name": "chayvekhocvoianh_erik"
    }
 ]

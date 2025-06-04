@@ -25,3 +25,12 @@
    font-size: 1.4rem;
    color: rgba(252, 252, 253, 0.5);
 }
+
+.large {
+   height: 100px;
+   width: 330px;
+   .image {
+      height: 80px;
+      width: 80px;
+   }
+}

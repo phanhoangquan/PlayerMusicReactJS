@@ -5,9 +5,11 @@ import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
-function MusicItem({ data }) {
+function MusicItem({ data, large = false }) {
+   const classes = cx('wrapper', { large });
+
    return (
-      <Link to={`/@${data.name}`} className={cx('wrapper')}>
+      <Link to={`/@${data.name}`} className={classes}>
          <Image className={cx('image')} src={data.image}></Image>
          <div className={cx('info')}>
             <p className={cx('name')}>{data.title}</p>
