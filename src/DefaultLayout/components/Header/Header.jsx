@@ -16,6 +16,7 @@ function Header() {
                <Link className={cx('link-logo')} to={config.routes.home}>
                   <img className={cx('logo-music')} src={images.logo} alt=""></img>
                </Link>
+               <h1 className={cx('title')}>Music App</h1>
             </div>
             <Search />
             <Menu />

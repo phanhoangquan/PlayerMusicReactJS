@@ -1,0 +1,18 @@
+[
+   {
+      "id": 1,
+      "image": "/assets/singers/son_tung_mtp.png",
+      "album": "MTP Collection"
+   },
+
+   {
+      "id": 2,
+      "image": "/assets/singers/erik.png",
+      "album": "Erik Collection"
+   },
+   {
+      "id": 3,
+      "image": "/assets/singers/soobin_hoang_son.png",
+      "album": "Soobin Collection"
+   }
+]
