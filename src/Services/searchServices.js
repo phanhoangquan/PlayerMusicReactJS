@@ -1,7 +1,7 @@
 import * as httpRequests from '~/utils/httpRequest';
 
 const searchServices = async (keyword, numberResult) => {
-   const response = await httpRequests.get('songs.json');
+   const response = await httpRequests.get('assets/data/songs.json');
    const result = response.filter((res) => {
       return res.title.toLowerCase().includes(keyword.toLowerCase());
    });

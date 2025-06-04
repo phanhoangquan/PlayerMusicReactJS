@@ -12,7 +12,7 @@ function Home() {
    useEffect(() => {
       const MusicApi = async () => {
          try {
-            const response = await Requests.get('songs.json');
+            const response = await Requests.get('assets/data/songs.json');
             setMusics(response);
          } catch {
             console.error('API MUSIC ERROR');
@@ -25,8 +25,8 @@ function Home() {
          <div className={cx('content')}>
             {musics.map((music, index) => {
                return (
-                  <div className={cx('menu-item')}>
-                     <MusicItem key={index} data={music} large />
+                  <div key={index} className={cx('menu-item')}>
+                     <MusicItem data={music} large />
                   </div>
                );
             })}
