@@ -14,20 +14,27 @@ import {
    faVolumeUp,
 } from '@fortawesome/free-solid-svg-icons';
 
+import { useContext, useRef } from 'react';
+import { MusicContext } from '~/context/MusicContext';
+
 const cx = classNames.bind(styles);
 
 function Player() {
+   const { isPlaying, setIsPlaying, currentSong, setCurrentSong } = useContext(MusicContext);
+
+   const audioRef = useRef();
+
    return (
       <div className={cx('wrapper')}>
          <div className={cx('player')}>
             <div className={cx('dashboard')}>
                <div className={cx('media')}>
                   <div className={cx('media-left')}>
-                     <Image className={cx('cd-image')} src="fff" />
+                     <Image className={cx('cd-image')} src={currentSong.image} />
                   </div>
                   <div className={cx('media-title')}>
-                     <strong className={cx('name')}>Namesong</strong>
-                     <p className={cx('singer')}>Namesinger</p>
+                     <strong className={cx('name')}>{currentSong.title}</strong>
+                     <p className={cx('singer')}>{currentSong.singer}</p>
                   </div>
                   <div className={cx('media-right')}>
                      <div className={cx('more-icon')}>
@@ -79,6 +86,7 @@ function Player() {
                   </div>
                </div>
             </div>
+            <audio ref={audioRef} id="audio" src={currentSong.url}></audio>
          </div>
       </div>
    );

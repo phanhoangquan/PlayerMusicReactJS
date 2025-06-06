@@ -1,18 +1,37 @@
 .wrapper {
    display: flex;
+   position: static;
    align-items: center;
    padding: 8px;
    color: var(--white);
    border-radius: 10px;
    &:hover {
       background-color: rgba(149, 149, 149, 0.8);
+      .play-btn {
+         display: block;
+      }
+      .pause-btn {
+         display: block;
+      }
    }
+}
+.cd {
+   display: flex;
+   position: relative;
 }
 .image {
    height: 55px;
    width: 55px;
    border-radius: 4px;
    object-fit: cover;
+}
+.play-btn,
+.pause-btn {
+   position: absolute;
+   display: none;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
 }
 .info {
    margin-left: 10px;

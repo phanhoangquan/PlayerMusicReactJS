@@ -82,6 +82,8 @@ function Search() {
                   </PopperWrapper>
                </div>
             )}
+            // Tránh để Tippy bị không bị cha bao phủ khi dùng position trong css
+            appendTo={document.body}
          >
             <div className={cx('search')}>
                <input
