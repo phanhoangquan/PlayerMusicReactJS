@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import styles from '../DefaultLayout/DefaultLayout.module.scss';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+import Player from './components/Player';
 
 const cx = classNames.bind(styles);
 
@@ -13,6 +14,7 @@ function DefaultLayout({ children }) {
             <Sidebar />
             <div className={cx('content')}>{children}</div>
          </div>
+         <Player />
       </div>
    );
 }
