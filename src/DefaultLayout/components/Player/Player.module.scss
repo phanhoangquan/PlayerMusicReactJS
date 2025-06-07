@@ -119,4 +119,36 @@
    .volume {
       margin-right: 20px;
    }
+   .volume,
+   .list:hover {
+      cursor: pointer;
+   }
+}
+
+.container-list {
+   border-radius: 10px;
+   padding-top: 2px;
+   width: 280px;
+   height: 603px;
+   background-color: #333;
+   .playlist-title {
+      background-color: white;
+      padding-left: 10px;
+      color: #000;
+      font-weight: 700;
+      margin: 8px 5px 8px;
+      border-radius: 5px;
+      border: 2px solid rgba(201, 201, 201, 0.997);
+   }
+   .next-title {
+      margin-left: 10px;
+      font-weight: 700;
+   }
+   .list-player {
+      height: 470px;
+      overflow: auto;
+   }
+}
+.list-player::-webkit-scrollbar {
+   width: 0px;
 }

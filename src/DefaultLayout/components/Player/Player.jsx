@@ -14,16 +14,32 @@ import {
    faVolumeUp,
 } from '@fortawesome/free-solid-svg-icons';
 
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { MusicContext } from '~/context/MusicContext';
+import MusicItem from '~/components/MusicItem';
+import HeadlessTippy from '@tippyjs/react/headless';
+
+import * as Requests from '~/utils/httpRequest';
 
 const cx = classNames.bind(styles);
 
 function Player() {
    const { isPlaying, setIsPlaying, currentSong, setCurrentSong } = useContext(MusicContext);
+   const [songs, setSongs] = useState([]);
+   const [showPlaylist, setShowPlaylist] = useState(false);
 
    const audioRef = useRef();
    const BASE_URL = import.meta.env.VITE_BASE_URL;
+
+   const getAPISongs = async () => {
+      try {
+         const response = await Requests.get('/assets/data/songs.json');
+         setSongs(response);
+      } catch {
+         console.log('Error');
+      }
+   };
+   getAPISongs();
 
    useEffect(() => {
       audioRef.current.play();
@@ -43,6 +59,14 @@ function Player() {
 
    const handlePause = () => {
       setIsPlaying(false);
+   };
+
+   const handlePlaylist = () => {
+      if (showPlaylist) {
+         setShowPlaylist(false);
+      } else {
+         setShowPlaylist(true);
+      }
    };
 
    return (
@@ -106,9 +130,31 @@ function Player() {
                   <div className={cx('volume')}>
                      <FontAwesomeIcon icon={faVolumeUp} />
                   </div>
-                  <div className={cx('list')}>
-                     <FontAwesomeIcon icon={faList} />
-                  </div>
+                  <HeadlessTippy
+                     interactive
+                     visible={showPlaylist}
+                     offset={[0, 39]}
+                     render={() => (
+                        <div className={cx('container-list')}>
+                           <p className={cx('playlist-title')}>Playlist</p>
+                           <div className={cx('current-song')}>
+                              <MusicItem data={currentSong} small />
+                           </div>
+                           <p className={cx('next-title')}>Next</p>
+                           <div className={cx('list-player')}>
+                              {songs.map((song, index) => (
+                                 <div key={index} className={cx('song-item')}>
+                                    <MusicItem data={song} small />
+                                 </div>
+                              ))}
+                           </div>
+                        </div>
+                     )}
+                  >
+                     <div className={cx('list')} onClick={handlePlaylist}>
+                        <FontAwesomeIcon icon={faList} />
+                     </div>
+                  </HeadlessTippy>
                </div>
             </div>
             <audio ref={audioRef} id="audio" src={BASE_URL + currentSong.url}></audio>

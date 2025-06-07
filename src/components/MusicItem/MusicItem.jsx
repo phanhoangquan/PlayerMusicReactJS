@@ -9,10 +9,10 @@ import { faEllipsis, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
-function MusicItem({ data, large = false }) {
+function MusicItem({ data, large = false, small = false }) {
    const { isPlaying, setIsPlaying, currentSong, setCurrentSong, setShowPlayer } = useContext(MusicContext);
 
-   const classes = cx('wrapper', { large });
+   const classes = cx('wrapper', { large, small });
    const BASE_URL = import.meta.env.VITE_BASE_URL;
 
    const handlePlay = (e) => {

@@ -1,6 +1,5 @@
 .wrapper {
    display: flex;
-   position: static;
    align-items: center;
    padding: 8px;
    color: var(--white);
@@ -57,6 +56,18 @@
       width: 80px;
    }
 }
+.small {
+   height: 55px;
+   width: 280px;
+   .image {
+      height: 40px;
+      width: 40px;
+   }
+}
+// .wrapper.small {
+//    padding: 0;
+// }
+
 .more-btn {
    display: none;
    margin-right: 10px;
