@@ -9,6 +9,7 @@ import { UploadIcon } from '~/components/Icon/Icon';
 
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import HeadlessTippy from '@tippyjs/react/headless';
 
 const cx = classNames.bind(styles);
 
@@ -24,12 +25,21 @@ function Menu() {
    return (
       <div className={cx('wrapper')}>
          <div className={cx('action')}>
-            {!login && (
-               <Button className={cx('login-btn')} lighthigh onClick={handleShowLogin}>
-                  Login
-               </Button>
-            )}
-            {!login && showLogin && <Login setShowLogin={setShowLogin} setLogin={setLogin} setAccount={setAccount} />}
+            <HeadlessTippy
+               interactive
+               visible={!login && showLogin}
+               offset={[-600, 70]}
+               render={() => {
+                  return <Login setShowLogin={setShowLogin} setLogin={setLogin} setAccount={setAccount} />;
+               }}
+               appendTo={document.body}
+            >
+               {!login && (
+                  <Button className={cx('login-btn')} lighthigh onClick={handleShowLogin}>
+                     Login
+                  </Button>
+               )}
+            </HeadlessTippy>
             {login && (
                <div className={cx('options')}>
                   <div className={cx('option-item')}>
