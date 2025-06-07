@@ -27,9 +27,38 @@ function Player() {
    const { isPlaying, setIsPlaying, currentSong, setCurrentSong } = useContext(MusicContext);
    const [songs, setSongs] = useState([]);
    const [showPlaylist, setShowPlaylist] = useState(false);
+   const [currentTime, setCurrentTime] = useState(0);
+   const [duration, setDuration] = useState(0);
 
    const audioRef = useRef();
    const BASE_URL = import.meta.env.VITE_BASE_URL;
+
+   useEffect(() => {
+      const audio = audioRef.current;
+      const handleLoadedMetadata = () => {
+         setDuration(audio.duration);
+      };
+
+      audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+
+      return () => {
+         audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      };
+   }, [currentSong]);
+
+   useEffect(() => {
+      const audio = audioRef.current;
+
+      const handleTimeUpdate = () => {
+         setCurrentTime(audio.currentTime);
+      };
+
+      audio.addEventListener('timeupdate', handleTimeUpdate);
+
+      return () => {
+         audio.removeEventListener('timeupdate', handleTimeUpdate);
+      };
+   }, []);
 
    useEffect(() => {
       const getAPISongs = async () => {
@@ -89,6 +118,13 @@ function Player() {
       }
    };
 
+   const handleSkip = (e) => {
+      const percent = e.target.value;
+      const newTime = (percent * duration) / 100;
+      audioRef.current.currentTime = newTime;
+      setCurrentTime(newTime); // cập nhật luôn cho thanh trượt không bị delay
+   };
+
    return (
       <div className={cx('wrapper')}>
          <div className={cx('player')}>
@@ -138,10 +174,11 @@ function Player() {
                            id="progress"
                            className={cx('progress')}
                            type="range"
-                           value="0"
+                           value={(currentTime / duration) * 100}
                            step="1"
                            min="0"
                            max="100"
+                           onChange={handleSkip}
                         ></input>
                      </div>
                   </div>

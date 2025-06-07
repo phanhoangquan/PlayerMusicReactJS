@@ -84,31 +84,11 @@
       overflow: hidden;
    }
 
-   /* Thumb tàng hình hoặc cực nhỏ */
    .progress::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 0px; /* hoặc 8px nếu muốn có */
-      height: 0px;
-   }
-
-   .progress::-moz-range-thumb {
-      width: 0px;
-      height: 0px;
-   }
-
-   /* Overlay lớp trắng cho phần đã phát */
-   .progress::-webkit-slider-runnable-track {
-      background: transparent;
-   }
-
-   .progress::before {
-      content: '';
-      position: absolute;
-      height: 100%;
-      background: white;
-      border-radius: 999px;
-      width: var(--progress-percent, 0%);
-      z-index: 1;
+      width: 15px; /* hoặc 8px nếu muốn có */
+      height: 8px;
+      background-color: white;
    }
 }
 
