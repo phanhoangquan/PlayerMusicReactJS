@@ -31,15 +31,17 @@ function Player() {
    const audioRef = useRef();
    const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-   const getAPISongs = async () => {
-      try {
-         const response = await Requests.get('/assets/data/songs.json');
-         setSongs(response);
-      } catch {
-         console.log('Error');
-      }
-   };
-   getAPISongs();
+   useEffect(() => {
+      const getAPISongs = async () => {
+         try {
+            const response = await Requests.get('/assets/data/songs.json');
+            setSongs(response);
+         } catch {
+            console.log('Error');
+         }
+      };
+      getAPISongs();
+   }, []);
 
    useEffect(() => {
       audioRef.current.play();
@@ -69,6 +71,24 @@ function Player() {
       }
    };
 
+   const handleNextSong = () => {
+      const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+      if (currentIndex === songs.length - 1) {
+         setCurrentSong(songs[0]);
+      } else {
+         setCurrentSong(songs[currentIndex + 1]);
+      }
+   };
+
+   const handleBackSong = () => {
+      const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+      if (currentIndex === 0) {
+         setCurrentSong(songs[songs.length - 1]);
+      } else {
+         setCurrentSong(songs[currentIndex - 1]);
+      }
+   };
+
    return (
       <div className={cx('wrapper')}>
          <div className={cx('player')}>
@@ -92,7 +112,7 @@ function Player() {
                      <div className={cx('repeat-btn')}>
                         <FontAwesomeIcon icon={faRepeat} />
                      </div>
-                     <div className={cx('backward-btn')}>
+                     <div className={cx('backward-btn')} onClick={handleBackSong}>
                         <FontAwesomeIcon icon={faBackwardStep} />
                      </div>
                      {!isPlaying && (
@@ -105,7 +125,7 @@ function Player() {
                            <FontAwesomeIcon icon={faPauseCircle} />
                         </div>
                      )}
-                     <div className={cx('forward-btn')}>
+                     <div className={cx('forward-btn')} onClick={handleNextSong}>
                         <FontAwesomeIcon icon={faForwardStep} />
                      </div>
                      <div className={cx('random-btn')}>
