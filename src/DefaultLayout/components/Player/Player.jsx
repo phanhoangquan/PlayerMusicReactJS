@@ -29,8 +29,11 @@ function Player() {
    const [showPlaylist, setShowPlaylist] = useState(false);
    const [currentTime, setCurrentTime] = useState(0);
    const [duration, setDuration] = useState(0);
+   const [isRepeat, setIsRepeat] = useState(false);
+   const [isRandom, setIsRandom] = useState(false);
 
    const audioRef = useRef();
+
    const BASE_URL = import.meta.env.VITE_BASE_URL;
 
    useEffect(() => {
@@ -101,20 +104,30 @@ function Player() {
    };
 
    const handleNextSong = () => {
-      const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
-      if (currentIndex === songs.length - 1) {
-         setCurrentSong(songs[0]);
+      if (isRandom) {
+         const randomIndex = Math.floor(Math.random() * songs.length);
+         setCurrentSong(songs[randomIndex]);
       } else {
-         setCurrentSong(songs[currentIndex + 1]);
+         const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+         if (currentIndex === songs.length - 1) {
+            setCurrentSong(songs[0]);
+         } else {
+            setCurrentSong(songs[currentIndex + 1]);
+         }
       }
    };
 
    const handleBackSong = () => {
-      const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
-      if (currentIndex === 0) {
-         setCurrentSong(songs[songs.length - 1]);
+      if (isRandom) {
+         const randomIndex = Math.floor(Math.random() * songs.length);
+         setCurrentSong(songs[randomIndex]);
       } else {
-         setCurrentSong(songs[currentIndex - 1]);
+         const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+         if (currentIndex === 0) {
+            setCurrentSong(songs[songs.length - 1]);
+         } else {
+            setCurrentSong(songs[currentIndex - 1]);
+         }
       }
    };
 
@@ -124,6 +137,34 @@ function Player() {
       audioRef.current.currentTime = newTime;
       setCurrentTime(newTime); // cập nhật luôn cho thanh trượt không bị delay
    };
+
+   const handleRepeat = () => {
+      if (isRepeat) {
+         setIsRepeat(false);
+      } else {
+         setIsRepeat(true);
+         setIsRandom(false);
+      }
+   };
+   const handleRandom = () => {
+      if (isRandom) {
+         setIsRandom(false);
+      } else {
+         setIsRandom(true);
+         setIsRepeat(false);
+      }
+   };
+   // Listener Event End Audio
+   useEffect(() => {
+      audioRef.current.onended = () => {
+         if (isRepeat) {
+            audioRef.current.play();
+         } else if (isRandom) {
+            const randomIndex = Math.floor(Math.random() * songs.length);
+            setCurrentSong(songs[randomIndex]);
+         }
+      };
+   }, [currentSong, isRepeat, isRandom]);
 
    return (
       <div className={cx('wrapper')}>
@@ -145,8 +186,8 @@ function Player() {
                </div>
                <div className={cx('control')}>
                   <div className={cx('control-bar')}>
-                     <div className={cx('repeat-btn')}>
-                        <FontAwesomeIcon icon={faRepeat} />
+                     <div className={cx('repeat-btn', { active: isRepeat })}>
+                        <FontAwesomeIcon icon={faRepeat} onClick={handleRepeat} />
                      </div>
                      <div className={cx('backward-btn')} onClick={handleBackSong}>
                         <FontAwesomeIcon icon={faBackwardStep} />
@@ -164,7 +205,7 @@ function Player() {
                      <div className={cx('forward-btn')} onClick={handleNextSong}>
                         <FontAwesomeIcon icon={faForwardStep} />
                      </div>
-                     <div className={cx('random-btn')}>
+                     <div className={cx('random-btn', { active: isRandom })} onClick={handleRandom}>
                         <FontAwesomeIcon icon={faRandom} />
                      </div>
                   </div>

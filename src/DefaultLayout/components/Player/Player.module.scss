@@ -67,7 +67,14 @@
    .pause-btn {
       font-size: 2.7rem;
    }
+   .repeat-btn {
+      width: 23px;
+   }
+   .random-btn {
+      width: 23px;
+   }
 }
+
 .duration-bar {
    width: 100%;
    // Copy Spotify
@@ -131,4 +138,15 @@
 }
 .list-player::-webkit-scrollbar {
    width: 0px;
+}
+
+.active {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   background-color: white;
+   color: black;
+   border-radius: 5px;
+   width: 23px;
+   height: 23px;
 }
