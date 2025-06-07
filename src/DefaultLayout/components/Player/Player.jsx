@@ -14,7 +14,7 @@ import {
    faVolumeUp,
 } from '@fortawesome/free-solid-svg-icons';
 
-import { useContext, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { MusicContext } from '~/context/MusicContext';
 
 const cx = classNames.bind(styles);
@@ -23,6 +23,27 @@ function Player() {
    const { isPlaying, setIsPlaying, currentSong, setCurrentSong } = useContext(MusicContext);
 
    const audioRef = useRef();
+   const BASE_URL = import.meta.env.VITE_BASE_URL;
+
+   useEffect(() => {
+      audioRef.current.play();
+   }, [currentSong]);
+
+   useEffect(() => {
+      if (isPlaying) {
+         audioRef.current.play();
+      } else {
+         audioRef.current.pause();
+      }
+   }, [isPlaying]);
+
+   const handlePlay = () => {
+      setIsPlaying(true);
+   };
+
+   const handlePause = () => {
+      setIsPlaying(false);
+   };
 
    return (
       <div className={cx('wrapper')}>
@@ -50,12 +71,16 @@ function Player() {
                      <div className={cx('backward-btn')}>
                         <FontAwesomeIcon icon={faBackwardStep} />
                      </div>
-                     <div className={cx('play-btn')}>
-                        <FontAwesomeIcon icon={faPlayCircle} />
-                     </div>
-                     <div className={cx('pause-btn')}>
-                        <FontAwesomeIcon icon={faPauseCircle} />
-                     </div>
+                     {!isPlaying && (
+                        <div className={cx('play-btn')} onClick={handlePlay}>
+                           <FontAwesomeIcon icon={faPlayCircle} />
+                        </div>
+                     )}
+                     {isPlaying && (
+                        <div className={cx('pause-btn')} onClick={handlePause}>
+                           <FontAwesomeIcon icon={faPauseCircle} />
+                        </div>
+                     )}
                      <div className={cx('forward-btn')}>
                         <FontAwesomeIcon icon={faForwardStep} />
                      </div>
@@ -86,7 +111,7 @@ function Player() {
                   </div>
                </div>
             </div>
-            <audio ref={audioRef} id="audio" src={currentSong.url}></audio>
+            <audio ref={audioRef} id="audio" src={BASE_URL + currentSong.url}></audio>
          </div>
       </div>
    );

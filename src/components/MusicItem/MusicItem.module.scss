@@ -13,6 +13,9 @@
       .pause-btn {
          display: block;
       }
+      .more-btn {
+         display: block;
+      }
    }
 }
 .cd {
@@ -35,6 +38,7 @@
 }
 .info {
    margin-left: 10px;
+   flex: 1;
 }
 .name {
    font-size: 1.6rem;
@@ -52,4 +56,8 @@
       height: 80px;
       width: 80px;
    }
+}
+.more-btn {
+   display: none;
+   margin-right: 10px;
 }
