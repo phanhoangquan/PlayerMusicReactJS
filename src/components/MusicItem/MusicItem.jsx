@@ -27,7 +27,7 @@ function MusicItem({ data, large = false, small = false }) {
    };
 
    return (
-      <Link to={`/@${data.name}`} className={classes}>
+      <Link to={`/song/@${data.name}`} className={classes} state={data}>
          {(!isPlaying || currentSong?.id !== data.id) && (
             <div className={cx('cd')} onClick={handlePlay}>
                <Image className={cx('image')} src={BASE_URL + data.image}></Image>
@@ -47,7 +47,9 @@ function MusicItem({ data, large = false, small = false }) {
          )}
          <div className={cx('info')}>
             <p className={cx('name')}>{data.title}</p>
-            <p className={cx('singer')}>{data.singer}</p>
+            <Link className={cx('singer')} to={`/singer/@${data.singer}`}>
+               {data.singer}
+            </Link>
          </div>
          <div className={cx('more-btn')}>
             <FontAwesomeIcon icon={faEllipsis} />

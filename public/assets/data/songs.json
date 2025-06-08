@@ -7,7 +7,9 @@
       "album": "MTP Collection",
       "image": "/assets/images/lac_troi.png",
       "url": "/assets/songs/LacTroi-SonTungMTP-4725907.mp3",
-      "name": "lac_troi_STMTP"
+      "name": "lac_troi_STMTP",
+      "view": 3720,
+      "favourite": 76
    },
    {
       "id": 2,
@@ -17,7 +19,9 @@
       "album": "MTP Collection",
       "image": "/assets/images/chay_ngay_di.png",
       "url": "/assets/songs/ChayNgayDi-SonTungMTP-5468704.mp3",
-      "name": "chayngaydi_STMTP"
+      "name": "chayngaydi_STMTP",
+      "view": 5620,
+      "favourite": 45
    },
    {
       "id": 3,
@@ -27,7 +31,9 @@
       "album": "MTP Collection",
       "image": "/assets/images/muon_roi_ma_sao_con.png",
       "url": "/assets/songs/MuonRoiMaSaoCon-SonTungMTP.mp3",
-      "name": "muonroimasaocon_STMTP"
+      "name": "muonroimasaocon_STMTP",
+      "view": 7820,
+      "favourite": 120
    },
    {
       "id": 4,
@@ -37,7 +43,9 @@
       "album": "MTP Collection",
       "image": "/assets/images/con_mua_ngang_qua.png",
       "url": "/assets/songs/ConMuaNgangQua-SonTungMTP-1142953.mp3",
-      "name": "conmuangangqua_STMTP"
+      "name": "conmuangangqua_STMTP",
+      "view": 10620,
+      "favourite": 320
    },
    {
       "id": 5,
@@ -47,7 +55,9 @@
       "album": "Soobin Collection",
       "image": "/assets/images/anh_da_quen_voi_co_don.png",
       "url": "/assets/songs/AnhDaQuenVoiCoDon-SoobinHoangSon-4821170.mp3",
-      "name": "anhdaquenvoicodon_soobin"
+      "name": "anhdaquenvoicodon_soobin",
+      "view": 6620,
+      "favourite": 120
    },
    {
       "id": 6,
@@ -57,7 +67,9 @@
       "album": "Soobin Collection",
       "image": "/assets/images/di_de_tro_ve.png",
       "url": "/assets/songs/DiDeTroVe-SoobinHoangSon-4726882.mp3",
-      "name": "didetrove_soobin"
+      "name": "didetrove_soobin",
+      "view": 3620,
+      "favourite": 54
    },
    {
       "id": 7,
@@ -67,7 +79,9 @@
       "album": "Erik Collection",
       "image": "/assets/images/cham_day_noi_dau.png",
       "url": "/assets/songs/ChamDayNoiDau-ERIK-5441608.mp3",
-      "name": "chamdaynoidau_erik"
+      "name": "chamdaynoidau_erik",
+      "view": 3620,
+      "favourite": 67
    },
    {
       "id": 8,
@@ -77,7 +91,9 @@
       "album": "Erik Collection",
       "image": "/assets/images/dau_nhat_la_lang_im.png",
       "url": "/assets/songs/DauNhatLaLangIm-ERIK-7130326.mp3",
-      "name": "daunhatlalangim_erik"
+      "name": "daunhatlalangim_erik",
+      "view": 3220,
+      "favourite": 230
    },
    {
       "id": 9,
@@ -87,6 +103,8 @@
       "album": "Erik Collection",
       "image": "/assets/images/chay_ve_khoc_voi_anh.png",
       "url": "/assets/songs/YeuDuongKhoQuaThiChayVeKhocVoiAnh-ERIK-7128950.mp3",
-      "name": "chayvekhocvoianh_erik"
+      "name": "chayvekhocvoianh_erik",
+      "view": 1620,
+      "favourite": 40
    }
 ]

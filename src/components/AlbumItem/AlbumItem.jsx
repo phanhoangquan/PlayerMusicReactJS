@@ -9,8 +9,11 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 function AlbumItem({ data }) {
    const classes = cx('wrapper');
    return (
-      <Link className={classes}>
-         <Image className={cx('image')} src={BASE_URL + data.image}></Image>
+      <Link className={classes} to={`/album/@${data.album}`}>
+         <div className={cx('image-container')}>
+            <Image className={cx('image')} src={BASE_URL + data.image}></Image>
+         </div>
+
          <p className={cx('name')}>{data.album}</p>
       </Link>
    );

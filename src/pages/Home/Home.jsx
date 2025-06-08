@@ -4,12 +4,14 @@ import MusicItem from '~/components/MusicItem';
 import * as Requests from '~/utils/httpRequest';
 import { useState, useEffect } from 'react';
 import AlbumItem from '~/components/AlbumItem';
+import SingerItem from '~/components/SingerItem';
 
 const cx = classNames.bind(styles);
 
 function Home() {
    const [musics, setMusics] = useState([]);
    const [albums, setAlbums] = useState([]);
+   const [singers, setSingers] = useState([]);
 
    useEffect(() => {
       const MusicApi = async () => {
@@ -35,6 +37,18 @@ function Home() {
       AlbumApi();
    }, []);
 
+   useEffect(() => {
+      const SingerApi = async () => {
+         try {
+            const response = await Requests.get('assets/data/singers.json');
+            setSingers(response);
+         } catch {
+            console.error('API Singer ERROR');
+         }
+      };
+      SingerApi();
+   }, []);
+
    return (
       <div className={cx('wrapper')}>
          <div className={cx('container')}>
@@ -54,7 +68,16 @@ function Home() {
                   return (
                      <div key={index} className={cx('album-item')}>
                         <AlbumItem data={album} />
-                        <AlbumItem data={album} />
+                     </div>
+                  );
+               })}
+            </div>
+            <div className={cx('title')}>Singer</div>
+            <div className={cx('content-singer')}>
+               {singers.map((singer, index) => {
+                  return (
+                     <div key={index} className={cx('singer-item')}>
+                        <SingerItem data={singer} />
                      </div>
                   );
                })}

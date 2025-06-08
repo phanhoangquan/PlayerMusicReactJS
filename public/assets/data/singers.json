@@ -1,0 +1,17 @@
+[
+   {
+      "id": 1,
+      "singer": "Sơn Tùng MTP",
+      "avatar": "/assets/singers/son_tung_mtp.png"
+   },
+   {
+      "id": 2,
+      "singer": "Soobin Hoàng Sơn",
+      "avatar": "/assets/singers/soobin_hoang_son.png"
+   },
+   {
+      "id": 3,
+      "singer": "Erik",
+      "avatar": "/assets/singers/erik.png"
+   }
+]

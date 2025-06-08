@@ -31,6 +31,7 @@ function Player() {
    const [duration, setDuration] = useState(0);
    const [isRepeat, setIsRepeat] = useState(false);
    const [isRandom, setIsRandom] = useState(false);
+   const [volume, setVolume] = useState(0.5);
 
    const audioRef = useRef();
 
@@ -76,6 +77,7 @@ function Player() {
    }, []);
 
    useEffect(() => {
+      audioRef.current.volume = volume;
       audioRef.current.play();
    }, [currentSong]);
 
@@ -154,6 +156,13 @@ function Player() {
          setIsRepeat(false);
       }
    };
+
+   const handleVolumeChange = (e) => {
+      const newVolume = e.target.value;
+      setVolume(newVolume);
+      audioRef.current.volume = newVolume;
+   };
+
    // Listener Event End Audio
    useEffect(() => {
       audioRef.current.onended = () => {
@@ -227,6 +236,16 @@ function Player() {
                <div className={cx('control-right')}>
                   <div className={cx('volume')}>
                      <FontAwesomeIcon icon={faVolumeUp} />
+                     <input
+                        type="range"
+                        className={cx('volume-control')}
+                        id="volume-control"
+                        min="0"
+                        max="1"
+                        step="0.01"
+                        value={volume}
+                        onChange={handleVolumeChange}
+                     />
                   </div>
                   <HeadlessTippy
                      interactive
@@ -249,7 +268,7 @@ function Player() {
                         </div>
                      )}
                   >
-                     <div className={cx('list')} onClick={handlePlaylist}>
+                     <div className={cx('list', { active: showPlaylist })} onClick={handlePlaylist}>
                         <FontAwesomeIcon icon={faList} />
                      </div>
                   </HeadlessTippy>

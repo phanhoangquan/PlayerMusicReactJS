@@ -106,10 +106,19 @@
    justify-content: space-between;
    .volume {
       margin-right: 20px;
+      display: flex;
+      align-items: center;
+      .volume-control {
+         margin-left: 10px;
+      }
    }
    .volume,
    .list:hover {
       cursor: pointer;
+   }
+   .list {
+      width: 23px;
+      height: 23px;
    }
 }
 
