@@ -24,8 +24,7 @@ import * as Requests from '~/utils/httpRequest';
 const cx = classNames.bind(styles);
 
 function Player() {
-   const { isPlaying, setIsPlaying, currentSong, setCurrentSong } = useContext(MusicContext);
-   const [songs, setSongs] = useState([]);
+   const { isPlaying, setIsPlaying, currentSong, setCurrentSong, songs, setSongs } = useContext(MusicContext);
    const [showPlaylist, setShowPlaylist] = useState(false);
    const [currentTime, setCurrentTime] = useState(0);
    const [duration, setDuration] = useState(0);
@@ -65,15 +64,19 @@ function Player() {
    }, []);
 
    useEffect(() => {
-      const getAPISongs = async () => {
-         try {
-            const response = await Requests.get('/assets/data/songs.json');
-            setSongs(response);
-         } catch {
-            console.log('Error');
-         }
-      };
-      getAPISongs();
+      if (songs) {
+         return;
+      } else {
+         const getAPISongs = async () => {
+            try {
+               const response = await Requests.get('/assets/data/songs.json');
+               setSongs(response);
+            } catch {
+               console.log('Error');
+            }
+         };
+         getAPISongs();
+      }
    }, []);
 
    useEffect(() => {

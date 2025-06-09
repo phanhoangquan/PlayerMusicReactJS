@@ -45,7 +45,7 @@ function Song() {
    return (
       <div className={cx('wrapper')}>
          <div className={cx('wrapper-info')}>
-            <MusicItem className={cx('image')} data={song} just_img />
+            <MusicItem data={song} just_img />
             <div className={cx('info')}>
                <p className={cx('title')}>Info</p>
                <MusicItem data={song} />
