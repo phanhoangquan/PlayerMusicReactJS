@@ -1,11 +1,11 @@
 const routes = {
    home: '/',
-   profile: '/profile/:name',
-   singer: '/singer/:name',
    favourite: '/favourite',
    trending: '/trending',
    top: '/top',
    ratings: '/ratings',
+   profile: '/profile/:name',
+   singer: '/singer/:name',
    song: '/song/:name',
    album: '/album/:name',
 };

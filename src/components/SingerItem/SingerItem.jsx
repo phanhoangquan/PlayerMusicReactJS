@@ -10,10 +10,10 @@ const cx = classNames.bind(styles);
 function SingerItem({ data }) {
    return (
       <div className={cx('wrapper')}>
-         <Link className={cx('singer')} to={`/singer/@${data.singer}`}>
+         <Link className={cx('singer')} to={`/singer/${data.singer}`}>
             <Image className={cx('avatar')} src={BASE_URL + data.avatar} />
          </Link>
-         <Link className={cx('name')} to={`/singer/@${data.singer}`}>
+         <Link className={cx('name')} to={`/singer/${data.singer}`}>
             {data.singer}
          </Link>
       </div>

@@ -13,7 +13,6 @@ function Image({ src, alt = '', className, ...props }) {
 
    const handleError = () => {
       setAvatar(images.noimage);
-      console.log('error');
    };
 
    return <img className={cx('wrapper', className)} src={avatar} alt={alt} {...props} onError={handleError}></img>;

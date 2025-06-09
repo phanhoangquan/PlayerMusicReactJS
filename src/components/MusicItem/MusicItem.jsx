@@ -9,10 +9,10 @@ import { faEllipsis, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
-function MusicItem({ data, large = false, small = false }) {
+function MusicItem({ data, large = false, small = false, just_img = false }) {
    const { isPlaying, setIsPlaying, currentSong, setCurrentSong, setShowPlayer } = useContext(MusicContext);
 
-   const classes = cx('wrapper', { large, small });
+   const classes = cx('wrapper', { large, small, just_img });
    const BASE_URL = import.meta.env.VITE_BASE_URL;
 
    const handlePlay = (e) => {
@@ -27,7 +27,7 @@ function MusicItem({ data, large = false, small = false }) {
    };
 
    return (
-      <Link to={`/song/@${data.name}`} className={classes} state={data}>
+      <Link to={`/song/${data.name}`} className={classes}>
          {(!isPlaying || currentSong?.id !== data.id) && (
             <div className={cx('cd')} onClick={handlePlay}>
                <Image className={cx('image')} src={BASE_URL + data.image}></Image>
@@ -45,15 +45,19 @@ function MusicItem({ data, large = false, small = false }) {
                </div>
             </div>
          )}
-         <div className={cx('info')}>
-            <p className={cx('name')}>{data.title}</p>
-            <Link className={cx('singer')} to={`/singer/@${data.singer}`}>
-               {data.singer}
-            </Link>
-         </div>
-         <div className={cx('more-btn')}>
-            <FontAwesomeIcon icon={faEllipsis} />
-         </div>
+         {!just_img && (
+            <>
+               <div className={cx('info')}>
+                  <p className={cx('name')}>{data.title}</p>
+                  <Link className={cx('singer')} to={`/singer/${data.singer}`}>
+                     {data.singer}
+                  </Link>
+               </div>
+               <div className={cx('more-btn')}>
+                  <FontAwesomeIcon icon={faEllipsis} />
+               </div>
+            </>
+         )}
       </Link>
    );
 }

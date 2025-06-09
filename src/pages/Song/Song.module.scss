@@ -1,0 +1,61 @@
+.wrapper {
+   color: white;
+   padding: 20px;
+}
+.wrapper-info {
+   display: flex;
+   width: 100%;
+}
+.info {
+   margin-left: 25px;
+   flex: 1;
+   .title {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      background-color: rgb(67, 67, 67);
+      border-radius: 4px;
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+   }
+   .name {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-top: 20px;
+   }
+   .singer {
+      display: block;
+      color: #b8b8b8;
+      font-weight: 600;
+      margin-bottom: 5px;
+      &:hover {
+         text-decoration: underline;
+      }
+   }
+   .view {
+      font-size: 1.4rem;
+      margin-bottom: 2px;
+      margin-right: 5px;
+   }
+   .favourite {
+      margin-right: 5px;
+      font-size: 1.4rem;
+   }
+}
+
+.more {
+   margin-top: 20px;
+   .title-more {
+      font-weight: 700;
+   }
+   .name-singer {
+      font-size: 1.8rem;
+      font-weight: 800;
+   }
+   .music {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+   }
+}
