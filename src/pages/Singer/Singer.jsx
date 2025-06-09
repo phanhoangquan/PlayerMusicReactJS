@@ -54,6 +54,11 @@ function Song() {
       setIsAlbum(true);
    };
 
+   const playlistMusic = () => {
+      setSongs(moresongs);
+      setIsAlbum(true);
+   };
+
    return (
       <div className={cx('wrapper')}>
          <div className={cx('wrapper-info')}>
@@ -74,7 +79,7 @@ function Song() {
             <div className={cx('music')}>
                {moresongs.map((song, index) => (
                   <div className={cx('music-item')} key={index}>
-                     <MusicItem data={song} large />
+                     <MusicItem data={song} large playlistMusic={playlistMusic} />
                   </div>
                ))}
             </div>
