@@ -4,14 +4,13 @@ import styles from './AlbumItem.module.scss';
 import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
-const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function AlbumItem({ data }) {
    const classes = cx('wrapper');
    return (
       <Link className={classes} to={`/album/${data.album}`}>
          <div className={cx('image-container')}>
-            <Image className={cx('image')} src={BASE_URL + data.image}></Image>
+            <Image className={cx('image')} src={data.image}></Image>
          </div>
 
          <p className={cx('name')}>{data.album}</p>

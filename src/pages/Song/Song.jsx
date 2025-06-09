@@ -34,7 +34,8 @@ function Song() {
          try {
             const response = await Requests.get('/assets/data/songs.json');
             const moresongs = response.filter((res) => song.singer === res.singer);
-            setMoreSongs(moresongs);
+            const result = moresongs.filter((res) => res.title !== song.title);
+            setMoreSongs(result);
          } catch {
             console.log('ERROR SONG API');
          }

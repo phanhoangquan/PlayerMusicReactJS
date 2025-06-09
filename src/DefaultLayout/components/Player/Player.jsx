@@ -34,8 +34,6 @@ function Player() {
 
    const audioRef = useRef();
 
-   const BASE_URL = import.meta.env.VITE_BASE_URL;
-
    useEffect(() => {
       if (isAlbum) {
          return;
@@ -277,7 +275,7 @@ function Player() {
                   </HeadlessTippy>
                </div>
             </div>
-            <audio ref={audioRef} id="audio" src={BASE_URL + currentSong.url}></audio>
+            <audio ref={audioRef} id="audio" src={currentSong.url}></audio>
          </div>
       </div>
    );

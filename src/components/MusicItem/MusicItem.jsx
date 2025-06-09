@@ -13,7 +13,6 @@ function MusicItem({ data, large = false, small = false, just_img = false, playl
    const { isPlaying, setIsPlaying, currentSong, setCurrentSong, setShowPlayer } = useContext(MusicContext);
 
    const classes = cx('wrapper', { large, small, just_img });
-   const BASE_URL = import.meta.env.VITE_BASE_URL;
 
    const handlePlay = (e) => {
       e.preventDefault();
@@ -33,7 +32,7 @@ function MusicItem({ data, large = false, small = false, just_img = false, playl
       <Link to={`/song/${data.name}`} className={classes}>
          {(!isPlaying || currentSong?.id !== data.id) && (
             <div className={cx('cd')} onClick={handlePlay}>
-               <Image className={cx('image')} src={BASE_URL + data.image}></Image>
+               <Image className={cx('image')} src={data.image}></Image>
                <div className={cx('play-btn')}>
                   <FontAwesomeIcon icon={faPlay} />
                </div>
@@ -42,7 +41,7 @@ function MusicItem({ data, large = false, small = false, just_img = false, playl
 
          {isPlaying && currentSong.id === data.id && (
             <div className={cx('cd')} onClick={handlePause}>
-               <Image className={cx('image')} src={BASE_URL + data.image}></Image>
+               <Image className={cx('image')} src={data.image}></Image>
                <div className={cx('pause-btn')}>
                   <FontAwesomeIcon icon={faPause} />
                </div>
