@@ -18,13 +18,13 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { MusicContext } from '~/context/MusicContext';
 import MusicItem from '~/components/MusicItem';
 import HeadlessTippy from '@tippyjs/react/headless';
-
 import * as Requests from '~/utils/httpRequest';
 
 const cx = classNames.bind(styles);
 
 function Player() {
-   const { isPlaying, setIsPlaying, currentSong, setCurrentSong, songs, setSongs } = useContext(MusicContext);
+   const { isPlaying, setIsPlaying, currentSong, setCurrentSong, songs, setSongs, isAlbum } = useContext(MusicContext);
+
    const [showPlaylist, setShowPlaylist] = useState(false);
    const [currentTime, setCurrentTime] = useState(0);
    const [duration, setDuration] = useState(0);
@@ -35,6 +35,22 @@ function Player() {
    const audioRef = useRef();
 
    const BASE_URL = import.meta.env.VITE_BASE_URL;
+
+   useEffect(() => {
+      if (isAlbum) {
+         return;
+      } else {
+         const getAPISongs = async () => {
+            try {
+               const response = await Requests.get('/assets/data/songs.json');
+               setSongs(response);
+            } catch {
+               console.log('Error');
+            }
+         };
+         getAPISongs();
+      }
+   }, []);
 
    useEffect(() => {
       const audio = audioRef.current;
@@ -61,22 +77,6 @@ function Player() {
       return () => {
          audio.removeEventListener('timeupdate', handleTimeUpdate);
       };
-   }, []);
-
-   useEffect(() => {
-      if (songs) {
-         return;
-      } else {
-         const getAPISongs = async () => {
-            try {
-               const response = await Requests.get('/assets/data/songs.json');
-               setSongs(response);
-            } catch {
-               console.log('Error');
-            }
-         };
-         getAPISongs();
-      }
    }, []);
 
    useEffect(() => {

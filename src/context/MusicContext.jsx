@@ -7,10 +7,22 @@ function MusicProvider({ children }) {
    const [isPlaying, setIsPlaying] = useState(false);
    const [showPlayer, setShowPlayer] = useState(false);
    const [songs, setSongs] = useState([]);
+   const [isAlbum, setIsAlbum] = useState(false);
 
    return (
       <MusicContext.Provider
-         value={{ currentSong, setCurrentSong, isPlaying, setIsPlaying, showPlayer, setShowPlayer, songs, setSongs }}
+         value={{
+            currentSong,
+            setCurrentSong,
+            isPlaying,
+            setIsPlaying,
+            showPlayer,
+            setShowPlayer,
+            songs,
+            setSongs,
+            isAlbum,
+            setIsAlbum,
+         }}
       >
          {children}
       </MusicContext.Provider>

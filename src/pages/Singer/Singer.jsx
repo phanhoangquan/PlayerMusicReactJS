@@ -18,7 +18,7 @@ function Song() {
    const [singer, setSinger] = useState([]);
    const [moresongs, setMoreSongs] = useState([]);
 
-   const { setCurrentSong, setIsPlaying, setShowPlayer, setSongs } = useContext(MusicContext);
+   const { setCurrentSong, setIsPlaying, setShowPlayer, setSongs, setIsAlbum } = useContext(MusicContext);
 
    useEffect(() => {
       const songAPI = async () => {
@@ -47,11 +47,11 @@ function Song() {
    }, [singer]);
 
    const handlePlayAlbum = () => {
-      console.log('Click');
       setShowPlayer(true);
       setCurrentSong(moresongs[0]);
       setIsPlaying(true);
       setSongs(moresongs);
+      setIsAlbum(true);
    };
 
    return (

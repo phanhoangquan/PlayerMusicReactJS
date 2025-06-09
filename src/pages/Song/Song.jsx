@@ -50,7 +50,7 @@ function Song() {
                <p className={cx('title')}>Info</p>
                <MusicItem data={song} />
                <p className={cx('name')}>{song.title}</p>
-               <Link to={`@/singer/${song.singer}`} className={cx('singer')}>
+               <Link to={`/singer/${song.singer}`} className={cx('singer')}>
                   {song.singer}
                </Link>
                <div>
