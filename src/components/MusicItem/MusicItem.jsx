@@ -10,7 +10,7 @@ import { faEllipsis, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 const cx = classNames.bind(styles);
 
 function MusicItem({ data, large = false, small = false, just_img = false, playlistMusic = false }) {
-   const { isPlaying, setIsPlaying, currentSong, setCurrentSong, setShowPlayer } = useContext(MusicContext);
+   const { isPlaying, setIsPlaying, currentSong, setCurrentSong, setShowPlayer, setIsAlbum } = useContext(MusicContext);
 
    const classes = cx('wrapper', { large, small, just_img });
 
@@ -19,6 +19,7 @@ function MusicItem({ data, large = false, small = false, just_img = false, playl
       setShowPlayer(true);
       setCurrentSong(data);
       setIsPlaying(true);
+      setIsAlbum(false);
       if (playlistMusic) {
          playlistMusic();
       }

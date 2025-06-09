@@ -1,4 +1,5 @@
 .wrapper {
+   margin-bottom: 100px;
    color: white;
    padding: 20px;
 }
@@ -6,8 +7,18 @@
    display: flex;
    width: 100%;
    .image {
+      border-radius: 4px;
       height: 300px;
       width: 300px;
+   }
+}
+.left-container {
+   .play-btn {
+      font-weight: 800;
+      font-size: 1.8rem;
+      margin: auto;
+      margin-top: 20px;
+      width: 260px;
    }
 }
 .info {

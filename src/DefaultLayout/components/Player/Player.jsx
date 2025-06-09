@@ -48,7 +48,7 @@ function Player() {
          };
          getAPISongs();
       }
-   }, []);
+   }, [isAlbum]);
 
    useEffect(() => {
       const audio = audioRef.current;

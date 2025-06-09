@@ -5,10 +5,16 @@ import MusicItem from '~/components/MusicItem';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import * as Requests from '~/utils/httpRequest';
+import Button from '~/components/Button';
+
+import { useContext } from 'react';
+import { MusicContext } from '~/context/MusicContext';
 
 const cx = classNames.bind(styles);
 
 function Song() {
+   const { setCurrentSong, setIsPlaying, setShowPlayer, setSongs, setIsAlbum } = useContext(MusicContext);
+
    const { name } = useParams();
    const [album, setAlbum] = useState([]);
    const [moresongs, setMoreSongs] = useState([]);
@@ -39,12 +45,35 @@ function Song() {
       moreSongsAPI();
    }, [album]);
 
+   const handlePlayAlbum = () => {
+      setShowPlayer(true);
+      setCurrentSong(moresongs[0]);
+      setIsPlaying(true);
+      setSongs(moresongs);
+      setIsAlbum(true);
+   };
+
+   const playlistMusic = () => {
+      setSongs(moresongs);
+      setIsAlbum(true);
+   };
+
    return (
       <div className={cx('wrapper')}>
          <div className={cx('wrapper-info')}>
-            <img className={cx('image')} src={album.image}></img>
+            <div className={cx('left-container')}>
+               <img className={cx('image')} src={album.image}></img>
+               <Button className={cx('play-btn')} lighthigh onClick={handlePlayAlbum}>
+                  Play Album
+               </Button>
+            </div>
             <div className={cx('info')}>
-               <p className={cx('title')}>Info</p>
+               <p className={cx('title')}>{album.album}</p>
+               {moresongs.map((song, index) => (
+                  <div key={index} className={cx('music-item')}>
+                     <MusicItem data={song} playlistMusic={playlistMusic} />
+                  </div>
+               ))}
             </div>
          </div>
       </div>
