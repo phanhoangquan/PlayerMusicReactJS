@@ -96,6 +96,34 @@
       }
    }
 }
+
+.rating_view {
+   &:hover {
+      background-color: transparent;
+   }
+   .info {
+      width: 300px;
+      flex: none;
+   }
+   .name-mid {
+      font-weight: 700;
+      flex: 1;
+   }
+}
+
+.rating_favourite {
+   &:hover {
+      background-color: transparent;
+   }
+   .info {
+      width: 300px;
+      flex: none;
+   }
+   .name-mid {
+      font-weight: 700;
+      flex: 1;
+   }
+}
 // .wrapper.small {
 //    padding: 0;
 // }

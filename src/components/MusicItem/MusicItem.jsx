@@ -6,13 +6,23 @@ import { useContext } from 'react';
 import { MusicContext } from '~/context/MusicContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsis, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faHeart } from '@fortawesome/free-regular-svg-icons';
 
 const cx = classNames.bind(styles);
 
-function MusicItem({ data, large = false, small = false, just_img = false, playlistMusic = false }) {
+function MusicItem({
+   data,
+   className,
+   large = false,
+   small = false,
+   just_img = false,
+   rating_view = false,
+   rating_favourite = false,
+   playlistMusic = false,
+}) {
    const { isPlaying, setIsPlaying, currentSong, setCurrentSong, setShowPlayer, setIsAlbum } = useContext(MusicContext);
 
-   const classes = cx('wrapper', { large, small, just_img });
+   const classes = cx('wrapper', { [className]: className, large, small, just_img, rating_view, rating_favourite });
 
    const handlePlay = (e) => {
       e.preventDefault();
@@ -56,6 +66,16 @@ function MusicItem({ data, large = false, small = false, just_img = false, playl
                      {data.singer}
                   </Link>
                </div>
+               {rating_view && (
+                  <div className={cx('name-mid')}>
+                     {data.view} View <FontAwesomeIcon icon={faEye} />
+                  </div>
+               )}
+               {rating_favourite && (
+                  <div className={cx('name-mid')}>
+                     {data.view} Favourite <FontAwesomeIcon icon={faHeart} />
+                  </div>
+               )}
                <div className={cx('more-btn')}>
                   <FontAwesomeIcon icon={faEllipsis} />
                </div>

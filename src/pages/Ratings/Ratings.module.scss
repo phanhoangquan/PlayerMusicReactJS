@@ -1,0 +1,75 @@
+.wrapper {
+   padding: 30px;
+   margin-bottom: 200px;
+   color: white;
+}
+.title {
+   display: flex;
+   align-items: center;
+   font-weight: 700;
+   font-size: 3rem;
+   margin-bottom: 20px;
+   .options {
+      font-size: 1.4rem;
+      margin-left: 100px;
+      border: 2px solid #636363;
+      border-radius: 26px;
+      display: flex;
+      .button {
+         color: white;
+         background-color: transparent;
+         &.active {
+            background-color: white;
+            color: black;
+         }
+      }
+   }
+
+   p {
+      margin-right: 15px;
+   }
+   .icon {
+      font-size: 4rem;
+      transition: transform 0.2s ease;
+      &:hover {
+         transform: scale(120%);
+         cursor: pointer;
+      }
+   }
+}
+.music {
+   .music-item {
+      display: flex;
+      align-items: center;
+      border-radius: 5px;
+      &:hover {
+         background-color: #3a3a3a;
+      }
+      .sort {
+         background-color: #818181;
+         border-radius: 2px;
+         width: 15px;
+         height: 4px;
+      }
+      .rank {
+         margin-right: 10px;
+         margin-left: 10px;
+         font-size: 4rem;
+         font-weight: 700;
+         color: transparent; /* nền trong suốt */
+         -webkit-text-stroke: 2px white; /* đường viền màu trắng */
+         &.number1 {
+            -webkit-text-stroke: 2px red;
+         }
+         &.number2 {
+            -webkit-text-stroke: 2px blue;
+         }
+         &.number3 {
+            -webkit-text-stroke: 2px green;
+         }
+      }
+      .item {
+         flex: 1;
+      }
+   }
+}
