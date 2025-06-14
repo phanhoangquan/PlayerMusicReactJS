@@ -2,20 +2,23 @@ import classNames from 'classnames/bind';
 import styles from './Menu.module.scss';
 import Button from '~/components/Button';
 
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+import HeadlessTippy from '@tippyjs/react/headless';
+
 import Login from './Login';
 import Sign from './Sign';
 import Image from '~/components/Image';
 import { UploadIcon } from '~/components/Icon/Icon';
 
-import Tippy from '@tippyjs/react';
-import 'tippy.js/dist/tippy.css';
-import HeadlessTippy from '@tippyjs/react/headless';
+import { MusicContext } from '~/context/MusicContext';
 
 const cx = classNames.bind(styles);
 
 function Menu() {
-   const [login, setLogin] = useState(false);
+   const { login, setLogin } = useContext(MusicContext);
+
    const [showLogin, setShowLogin] = useState(false);
    const [showSign, setShowSign] = useState(false);
    const [account, setAccount] = useState([]);

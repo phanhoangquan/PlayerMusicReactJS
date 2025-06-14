@@ -104,7 +104,7 @@ function Sign({ setShowSign, setShowLogin, setLogin, setAccount }) {
       handleValidConfirmPassword();
 
       if (nickname && password && !nicknameMessage && !passwordMessage && !confirmPasswordMessage) {
-         console.log('RUN');
+         // Logic chưa hoạt động , vì API tĩnh không thể post được , chưa kiểm thử
          try {
             await axios.post('/assets/data/users.json', {
                nickname: nickname,
@@ -114,6 +114,8 @@ function Sign({ setShowSign, setShowLogin, setLogin, setAccount }) {
          } catch {
             console.log('POST ACCOUNT ERROR');
          }
+         setLogin(true);
+         setAccount({ nickname: nickname, password: password, avatar: '/assets/avatars/2.png' });
       }
    };
    return (
