@@ -1,7 +1,7 @@
 .wrapper {
    background-color: #171717;
    border-radius: 10px;
-   padding: 30px 60px 30px;
+   padding: 30px 60px 30px 50px;
    border: 3px solid #a1a1a1;
    box-shadow: 10px 8px 12px rgb(176 174 174 / 0.5);
 }
@@ -45,7 +45,16 @@
 
 .form-group {
    margin: 14px 0;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
 }
+
+.form-message {
+   display: block;
+   color: red;
+}
+
 .form-label {
    color: white;
    font-weight: 700;
@@ -58,6 +67,10 @@
    &::placeholder {
       color: #333;
    }
+}
+.icon {
+   position: fixed;
+   right: 68px;
 }
 .form-message {
    padding-left: 7px;

@@ -73,7 +73,7 @@ function MusicItem({
                )}
                {rating_favourite && (
                   <div className={cx('name-mid')}>
-                     {data.view} Favourite <FontAwesomeIcon icon={faHeart} />
+                     {data.favourite} Favourite <FontAwesomeIcon icon={faHeart} />
                   </div>
                )}
                <div className={cx('more-btn')}>

@@ -11,6 +11,7 @@ function Button({
    lighthigh = false,
    primary = false,
    disabled = false,
+   outline = false,
    children,
    onClick,
    ...passProps
@@ -35,7 +36,7 @@ function Button({
       props.href = href;
       Comp = 'a';
    }
-   const classes = cx('wrapper', { [className]: className, primary, lighthigh, disabled });
+   const classes = cx('wrapper', { [className]: className, primary, lighthigh, disabled, outline });
    return (
       <Comp className={classes} {...props}>
          <span>{children}</span>

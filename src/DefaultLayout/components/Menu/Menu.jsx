@@ -4,6 +4,7 @@ import Button from '~/components/Button';
 
 import { useState } from 'react';
 import Login from './Login';
+import Sign from './Sign';
 import Image from '~/components/Image';
 import { UploadIcon } from '~/components/Icon/Icon';
 
@@ -16,10 +17,17 @@ const cx = classNames.bind(styles);
 function Menu() {
    const [login, setLogin] = useState(false);
    const [showLogin, setShowLogin] = useState(false);
+   const [showSign, setShowSign] = useState(false);
    const [account, setAccount] = useState([]);
 
    const handleShowLogin = () => {
+      setShowSign(false);
       setShowLogin(true);
+   };
+
+   const handleShowSign = () => {
+      setShowLogin(false);
+      setShowSign(true);
    };
 
    return (
@@ -27,17 +35,40 @@ function Menu() {
          <div className={cx('action')}>
             <HeadlessTippy
                interactive
-               visible={!login && showLogin}
-               offset={[-600, 70]}
+               visible={!login && (showLogin || showSign)}
+               offset={[-600, 40]}
                render={() => {
-                  return <Login setShowLogin={setShowLogin} setLogin={setLogin} setAccount={setAccount} />;
+                  if (showLogin) {
+                     return (
+                        <Login
+                           setShowLogin={setShowLogin}
+                           setShowSign={setShowSign}
+                           setLogin={setLogin}
+                           setAccount={setAccount}
+                        />
+                     );
+                  } else if (showSign) {
+                     return (
+                        <Sign
+                           setShowSign={setShowSign}
+                           setShowLogin={setShowLogin}
+                           setLogin={setLogin}
+                           setAccount={setAccount}
+                        />
+                     );
+                  }
                }}
                appendTo={document.body}
             >
                {!login && (
-                  <Button className={cx('login-btn')} lighthigh onClick={handleShowLogin}>
-                     Login
-                  </Button>
+                  <div className={cx('container-btn')}>
+                     <Button className={cx('sign-btn')} lighthigh outline onClick={handleShowSign}>
+                        Sign in
+                     </Button>
+                     <Button className={cx('login-btn')} lighthigh onClick={handleShowLogin}>
+                        Login
+                     </Button>
+                  </div>
                )}
             </HeadlessTippy>
             {login && (

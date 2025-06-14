@@ -1,25 +1,26 @@
 [
    {
       "id": 1,
-      "avatar": "http://localhost:5173/assets/avatars/1.png",
-      "nickname": "admin",
+      "avatar": "/assets/avatars/1.png",
       "name": "Phan Hoàng Quân",
+      "nickname": "admin",
       "password": "123",
+      "favourite": [{}],
       "admin": true
    },
    {
-      "id": 1,
-      "avatar": "http://localhost:5173/assets/avatars/1.png",
-      "nickname": "nhaccuatui",
+      "id": 2,
+      "avatar": "/assets/avatars/1.png",
       "name": "Nguyễn Văn Khôi",
+      "nickname": "nhaccuatui",
       "password": "123456",
       "admin": false
    },
    {
-      "id": 2,
-      "avatar": "http://localhost:5173/assets/avatars/2.png",
-      "nickname": "buoinamroi",
+      "id": 3,
+      "avatar": "/assets/avatars/2.png",
       "name": "Trần Thị Bưởi",
+      "nickname": "buoinamroi",
       "password": "123",
       "admin": false
    }

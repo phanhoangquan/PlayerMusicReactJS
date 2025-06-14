@@ -29,3 +29,12 @@
       transform: scale(0.95); // nhỏ nhẹ khi click xuống
    }
 }
+
+.outline {
+   background-color: transparent;
+   color: white;
+   text-decoration: underline;
+   &:hover {
+      background-color: transparent;
+   }
+}

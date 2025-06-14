@@ -12,7 +12,7 @@ import * as Requests from '~/utils/httpRequest';
 
 const cx = classNames.bind(styles);
 
-function Login({ setShowLogin, setLogin, setAccount }) {
+function Login({ setShowLogin, setShowSign, setLogin, setAccount }) {
    const wrapperRef = useRef();
 
    const [error, setError] = useState(false);
@@ -35,6 +35,11 @@ function Login({ setShowLogin, setLogin, setAccount }) {
 
    const handleClose = () => {
       setShowLogin(false);
+   };
+
+   const handleSwitch = () => {
+      setShowLogin(false);
+      setShowSign(true);
    };
 
    const handleLogin = async (e) => {
@@ -102,6 +107,10 @@ function Login({ setShowLogin, setLogin, setAccount }) {
             {error && <p className={cx('form-message')}>Incorrect username or password</p>}
 
             <Button className={cx('form-submit')}>Login</Button>
+            <div className={cx('bottom')}>
+               <span>Dont have an account?</span>
+               <a onClick={handleSwitch}>Sign Up</a>
+            </div>
          </form>
       </div>
    );
