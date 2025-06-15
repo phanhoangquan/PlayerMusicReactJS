@@ -4,26 +4,40 @@ import images from '~/assets/images/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
 import MusicItem from '~/components/MusicItem';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { MusicContext } from '~/context/MusicContext';
+import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
 function Favourite() {
-   const songs = JSON.parse(localStorage.getItem('favouriteSongs')) || [];
    const { setCurrentSong, setIsPlaying, setShowPlayer, setSongs, setIsAlbum } = useContext(MusicContext);
+   const [faSongs, setFaSongs] = useState([]);
+
+   useEffect(() => {
+      const songs = JSON.parse(localStorage.getItem('favouriteSongs')) || [];
+      setFaSongs(songs);
+   }, []);
 
    const handlePlay = () => {
-      setCurrentSong(songs[0]);
+      if (faSongs.length === 0) return;
+      setCurrentSong(faSongs[0]);
       setShowPlayer(true);
       setIsPlaying(true);
-      setSongs(songs);
+      setSongs(faSongs);
       setIsAlbum(true);
    };
 
    const playlistMusic = () => {
-      setSongs(songs);
+      setSongs(faSongs);
       setIsAlbum(true);
+   };
+
+   const handleDelete = (index) => {
+      const updated = [...faSongs];
+      updated.splice(index, 1);
+      setFaSongs(updated);
+      localStorage.setItem('favouriteSongs', JSON.stringify(updated));
    };
 
    return (
@@ -35,7 +49,7 @@ function Favourite() {
             <div className={cx('title')}>
                <p className={cx('playlist')}>Playlist</p>
                <h1>Favourite Music</h1>
-               <p className={cx('number')}>{songs.length} Musics</p>
+               <p className={cx('number')}>{faSongs.length} Musics</p>
             </div>
          </div>
          <div className={cx('container')}>
@@ -43,10 +57,18 @@ function Favourite() {
                <FontAwesomeIcon icon={faPlayCircle} />
             </div>
             <div className={cx('music')}>
-               {songs.map((song, index) => (
+               {faSongs.map((song, index) => (
                   <div className={cx('music-item')} key={index}>
                      <span>{index + 1}</span>
                      <MusicItem className={cx('item')} data={song} playlistMusic={playlistMusic} />
+                     <button
+                        className={cx('delete-btn')}
+                        onClick={() => {
+                           handleDelete(index);
+                        }}
+                     >
+                        Delete
+                     </button>
                   </div>
                ))}
             </div>

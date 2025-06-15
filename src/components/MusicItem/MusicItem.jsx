@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsis, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { faEye, faHeart } from '@fortawesome/free-regular-svg-icons';
 
+import { useNavigate } from 'react-router-dom';
+
 import HeadlessTippy from '@tippyjs/react/headless';
 
 const cx = classNames.bind(styles);
@@ -28,6 +30,8 @@ function MusicItem({
    const [active, setActive] = useState(false);
    const [success, setSuccess] = useState(false);
    const [failed, setFailed] = useState(false);
+
+   const navigate = useNavigate();
 
    const classes = cx('wrapper', {
       [className]: className,
@@ -79,12 +83,12 @@ function MusicItem({
          setSuccess(true);
          setTimeout(() => {
             setSuccess(false);
-         }, [2000]);
+         }, 2000);
       } else {
          setFailed(true);
          setTimeout(() => {
             setFailed(false);
-         }, [2000]);
+         }, 2000);
       }
    };
 
@@ -111,9 +115,17 @@ function MusicItem({
             <>
                <div className={cx('info')}>
                   <p className={cx('name')}>{data.title}</p>
-                  <Link className={cx('singer')} to={`/singer/${data.singer}`}>
+                  <p
+                     className={cx('singer')}
+                     to={`/singer/${data.singer}`}
+                     onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation(); // Ngăn sự kiện lan ra ngoài thẻ Link cha
+                        navigate(`/singer/${data.singer}`);
+                     }}
+                  >
                      {data.singer}
-                  </Link>
+                  </p>
                </div>
                {rating_view && (
                   <div className={cx('name-mid')}>
