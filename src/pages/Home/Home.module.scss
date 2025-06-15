@@ -4,7 +4,6 @@
 }
 .content-music {
    display: flex;
-   justify-content: space-between;
    padding: 20px;
    flex-wrap: wrap;
    margin-right: 20px;
@@ -28,5 +27,13 @@
    padding: 20px;
    display: flex;
    flex-wrap: wrap;
-   justify-content: space-between;
+   .singer-item {
+      margin-right: 60px;
+   }
+}
+
+@media (min-width: 740px) and (max-width: 1023px) {
+   .album-item {
+      margin-right: 40px;
+   }
 }

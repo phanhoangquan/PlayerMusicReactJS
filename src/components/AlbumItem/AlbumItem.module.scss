@@ -26,3 +26,12 @@
    font-weight: 700;
    padding: 10px;
 }
+
+@media (min-width: 740px) and (max-width: 1023px) {
+   .wrapper {
+      .image-container {
+         height: 200px;
+         width: 200px;
+      }
+   }
+}

@@ -94,3 +94,9 @@
 .search-item {
    margin: 20px 10px;
 }
+
+@media (max-width: 1023px) {
+   .home {
+      display: none;
+   }
+}

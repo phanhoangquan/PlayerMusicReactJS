@@ -38,7 +38,6 @@ function Menu() {
             <HeadlessTippy
                interactive
                visible={!login && (showLogin || showSign)}
-               offset={[-600, 40]}
                render={() => {
                   if (showLogin) {
                      return (
