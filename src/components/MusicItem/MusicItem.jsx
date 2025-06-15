@@ -22,8 +22,7 @@ function MusicItem({
    rating_favourite = false,
    playlistMusic = false,
 }) {
-   const { isPlaying, setIsPlaying, currentSong, setCurrentSong, setShowPlayer, setIsAlbum, login } =
-      useContext(MusicContext);
+   const { isPlaying, setIsPlaying, currentSong, setCurrentSong, setShowPlayer, setIsAlbum } = useContext(MusicContext);
 
    const [showMore, setShowMore] = useState(false);
    const [active, setActive] = useState(false);
@@ -74,18 +73,18 @@ function MusicItem({
 
       const stored = JSON.parse(localStorage.getItem('favouriteSongs')) || [];
 
-      if (!stored.includes(data.name)) {
-         const updated = [...stored, data.name];
+      if (!stored.some((prev) => prev.id === data.id)) {
+         const updated = [...stored, data];
          localStorage.setItem('favouriteSongs', JSON.stringify(updated));
          setSuccess(true);
          setTimeout(() => {
             setSuccess(false);
-         }, [1000]);
+         }, [2000]);
       } else {
          setFailed(true);
          setTimeout(() => {
             setFailed(false);
-         }, [1000]);
+         }, [2000]);
       }
    };
 

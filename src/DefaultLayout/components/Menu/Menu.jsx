@@ -17,9 +17,8 @@ import { MusicContext } from '~/context/MusicContext';
 const cx = classNames.bind(styles);
 
 function Menu() {
-   const { login, setLogin } = useContext(MusicContext);
+   const { login, setLogin, showLogin, setShowLogin } = useContext(MusicContext);
 
-   const [showLogin, setShowLogin] = useState(false);
    const [showSign, setShowSign] = useState(false);
    const [account, setAccount] = useState([]);
 

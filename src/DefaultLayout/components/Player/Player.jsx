@@ -164,6 +164,14 @@ function Player() {
       audioRef.current.volume = newVolume;
    };
 
+   const getNextSongs = () => {
+      const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+      if (currentIndex === -1) return songs;
+
+      const nextSongs = [...songs.slice(currentIndex + 1), ...songs.slice(0, currentIndex)];
+      return nextSongs;
+   };
+
    // Listener Event End Audio
    useEffect(() => {
       audioRef.current.onended = () => {
@@ -260,7 +268,7 @@ function Player() {
                            </div>
                            <p className={cx('next-title')}>Next</p>
                            <div className={cx('list-player')}>
-                              {songs.map((song, index) => (
+                              {getNextSongs().map((song, index) => (
                                  <div key={index} className={cx('song-item')}>
                                     <MusicItem data={song} small />
                                  </div>
