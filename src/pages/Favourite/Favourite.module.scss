@@ -1,7 +1,7 @@
 .wrapper {
    color: white;
    background: linear-gradient(to bottom, #6f22ce, #03050d);
-   height: 800px;
+   padding-bottom: 100px;
 }
 .info {
    background: linear-gradient(to bottom, #6f22ce, #7c2ae0);
@@ -40,7 +40,13 @@
    padding: 40px;
    .play-btn {
       font-size: 5rem;
+      width: 10px;
       color: #22ec76;
+      transition: transform 0.2s ease;
+      &:hover {
+         cursor: pointer;
+         transform: scale(110%);
+      }
    }
    .music {
       margin-top: 10px;

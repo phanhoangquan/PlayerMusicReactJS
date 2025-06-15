@@ -23,7 +23,8 @@ import * as Requests from '~/utils/httpRequest';
 const cx = classNames.bind(styles);
 
 function Player() {
-   const { isPlaying, setIsPlaying, currentSong, setCurrentSong, songs, setSongs, isAlbum } = useContext(MusicContext);
+   const { isPlaying, setIsPlaying, currentSong, setCurrentSong, songs, setSongs, isAlbum, setIsAlbum } =
+      useContext(MusicContext);
 
    const [showPlaylist, setShowPlaylist] = useState(false);
    const [currentTime, setCurrentTime] = useState(0);
@@ -172,6 +173,10 @@ function Player() {
       return nextSongs;
    };
 
+   const playlistMusic = () => {
+      setIsAlbum(true);
+   };
+
    // Listener Event End Audio
    useEffect(() => {
       audioRef.current.onended = () => {
@@ -270,7 +275,7 @@ function Player() {
                            <div className={cx('list-player')}>
                               {getNextSongs().map((song, index) => (
                                  <div key={index} className={cx('song-item')}>
-                                    <MusicItem data={song} small />
+                                    <MusicItem data={song} small playlistMusic={playlistMusic} />
                                  </div>
                               ))}
                            </div>
