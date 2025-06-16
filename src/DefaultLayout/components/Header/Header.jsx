@@ -52,8 +52,12 @@ function Header() {
                </Link>
                <h1 className={cx('title')}>Music App</h1>
             </div>
-            <Search />
-            <Menu />
+            <div className={cx('search')}>
+               <Search />
+            </div>
+            <div className={cx('menu')}>
+               <Menu />
+            </div>
          </div>
       </div>
    );

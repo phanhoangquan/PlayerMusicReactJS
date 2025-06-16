@@ -126,7 +126,7 @@
    border-radius: 10px;
    padding-top: 2px;
    width: 280px;
-   height: 603px;
+   height: calc(100vh - 100px);
    background-color: #333;
    .playlist-title {
       background-color: white;
@@ -166,11 +166,25 @@
       font-size: 1rem;
    }
 }
-@media (max-width: 800px) {
+
+@media (max-width: 739px) {
    .media-title {
       display: none;
    }
    .media-right {
       display: none;
+   }
+   .control-right {
+      .volume {
+         display: none;
+      }
+   }
+   .control {
+      .control-bar {
+         width: 180px;
+      }
+   }
+   .dashboard {
+      display: flex;
    }
 }
