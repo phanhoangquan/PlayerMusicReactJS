@@ -37,3 +37,20 @@
       margin-right: 40px;
    }
 }
+
+@media (max-width: 739px) {
+   .content-album {
+      display: flex;
+      justify-content: space-between;
+      margin-right: 0;
+   }
+   .album-item {
+      margin-right: 0px;
+   }
+   .content-singer {
+      justify-content: space-between;
+      .singer-item {
+         margin-right: 20px;
+      }
+   }
+}

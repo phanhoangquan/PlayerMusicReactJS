@@ -264,7 +264,7 @@ function Player() {
                   <HeadlessTippy
                      interactive
                      visible={showPlaylist}
-                     offset={[0, 39]}
+                     offset={[0, 40]}
                      render={() => (
                         <div className={cx('container-list')}>
                            <p className={cx('playlist-title')}>Playlist</p>

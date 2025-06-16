@@ -42,6 +42,9 @@
       display: flex;
       align-items: center;
       border-radius: 5px;
+      > p {
+         width: 28px;
+      }
       &:hover {
          background-color: #3a3a3a;
       }
@@ -70,6 +73,20 @@
       }
       .item {
          flex: 1;
+      }
+   }
+}
+
+@media (max-width: 739px) {
+   .wrapper {
+      padding: 20px;
+   }
+   .title {
+      p {
+         font-size: 2rem;
+      }
+      .options {
+         margin-left: 10px;
       }
    }
 }

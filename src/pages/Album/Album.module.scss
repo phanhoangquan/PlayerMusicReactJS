@@ -35,3 +35,18 @@
       margin-bottom: 10px;
    }
 }
+
+@media (max-width: 739px) {
+   .wrapper-info {
+      display: flex;
+      flex-direction: column;
+      .info {
+         margin-top: 20px;
+         margin-left: 0;
+      }
+      .image {
+         height: 100%;
+         width: 100%;
+      }
+   }
+}

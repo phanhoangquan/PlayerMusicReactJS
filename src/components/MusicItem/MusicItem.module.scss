@@ -98,20 +98,7 @@
    }
 }
 
-.rating_view {
-   &:hover {
-      background-color: transparent;
-   }
-   .info {
-      width: 300px;
-      flex: none;
-   }
-   .name-mid {
-      font-weight: 700;
-      flex: 1;
-   }
-}
-
+.rating_view,
 .rating_favourite {
    &:hover {
       background-color: transparent;
@@ -125,6 +112,7 @@
       flex: 1;
    }
 }
+
 // .wrapper.small {
 //    padding: 0;
 // }
@@ -186,5 +174,23 @@
 @media (min-width: 740px) and (max-width: 1023px) {
    .wrapper {
       width: 310px;
+   }
+}
+
+@media (max-width: 739px) {
+   .rating_view,
+   .rating_favourite {
+      .info {
+         width: 215px;
+      }
+      .name-mid {
+         display: none;
+      }
+   }
+   .just_img {
+      &.wrapper {
+         width: 200px;
+         height: 200px;
+      }
    }
 }

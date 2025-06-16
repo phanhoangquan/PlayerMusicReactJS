@@ -35,3 +35,19 @@
       }
    }
 }
+
+@media (max-width: 739px) {
+   .wrapper {
+      width: 150px;
+
+      .image-container {
+         height: 130px;
+         width: 130px;
+      }
+      .name {
+         padding: 4px 0;
+         font-weight: 600;
+         font-size: 1.2rem;
+      }
+   }
+}

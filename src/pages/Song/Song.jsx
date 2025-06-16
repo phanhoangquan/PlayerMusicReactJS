@@ -49,7 +49,10 @@ function Song() {
             <MusicItem data={song} just_img />
             <div className={cx('info')}>
                <p className={cx('title')}>Info</p>
-               <MusicItem data={song} />
+               <div className={cx('song-item')}>
+                  <MusicItem data={song} />
+               </div>
+
                <p className={cx('name')}>{song.title}</p>
                <Link to={`/singer/${song.singer}`} className={cx('singer')}>
                   {song.singer}

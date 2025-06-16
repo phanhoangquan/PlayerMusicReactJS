@@ -9,12 +9,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import Navbar from './Navbar';
 import HeadlessTippy from '@tippyjs/react/headless';
-import { useState } from 'react';
+import { useContext } from 'react';
+import { MusicContext } from '~/context/MusicContext';
 
 const cx = classNames.bind(styles);
 
 function Header() {
-   const [showNav, setShowNav] = useState(false);
+   const { showNav, setShowNav } = useContext(MusicContext);
 
    const handleNav = () => {
       if (showNav) {
@@ -32,7 +33,7 @@ function Header() {
                visible={showNav}
                appendTo={document.body}
                placement="bottom-start"
-               offset={[-60, 0]}
+               offset={[-60, 19]}
                onClickOutside={() => {
                   setShowNav(false);
                }}
